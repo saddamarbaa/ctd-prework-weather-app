@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather App | CTD Advanced Pre-Work
 
-## Getting Started
+A modern, responsive weather application built to view current conditions and a 7-day forecast for any city worldwide.
 
-First, run the development server:
+## Description
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+This project was built for the Code the Dream Advanced Pre-Work assignment. It consists of two main pages: a Current Weather search page, and a 7-Day Forecast search page. It uses the Open-Meteo API to seamlessly translate city names into coordinates and fetch real-time weather data.
+
+## How to run it locally
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/saddamarbaa/ctd-prework-weather-app.git
+   cd ctd-prework-weather-app
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+4. **View the app**
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+> **Build for production:**
+> To create an optimized production build, run:
+> ```bash
+> npm run build && npm start
+> ```
+
+## Features
+
+- **Current Weather Search:** Enter any city to view the current temperature, weather condition, and wind speed.
+- **7-Day Forecast:** View the next 7 days of daily high/low temperatures and conditions for any city.
+- **Robust Error Handling:** Graceful error states for empty inputs, unmatched cities, and network failures.
+- **Fast Navigation:** Instant client-side routing between pages without full reloads.
+- **Responsive Design:** Clean, modern UI that works perfectly on mobile and desktop.
+
+## APIs Used
+
+- [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api) - Resolves city names to latitude and longitude.
+- [Open-Meteo Forecast API](https://open-meteo.com/en/docs) - Provides the current weather and daily forecast data.
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript (Strict Mode)
+- **UI:** React 19 (Client Components)
+- **Styling:** CSS Modules & Native CSS Variables
+- **Data Fetching:** Native `fetch` API
+
+## Project Structure
+
+```text
+ctd-prework-weather-nextjs/
+├── app/
+│   ├── layout.tsx              # Root layout with shared <Navbar />
+│   ├── page.tsx                # Page 1 — Current Weather
+│   ├── forecast/
+│   │   └── page.tsx            # Page 2 — 7-Day Forecast
+│   ├── globals.css             # Global resets and CSS variables
+│   └── page.module.css         # Shared page-level styles
+├── components/
+│   ├── Navbar.tsx              # Navigation between routes
+│   ├── SearchForm.tsx          # Reusable search input form
+│   ├── CurrentWeatherCard.tsx  # Displays current weather data
+│   └── ForecastList.tsx        # Displays the 7-day forecast grid
+├── lib/
+│   ├── api.ts                  # API fetching logic
+│   ├── types.ts                # TypeScript interfaces
+│   └── weatherCodes.ts         # Weather code to description mapping
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Author
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Saddam Arbaa**
+*Built for the Code the Dream Advanced Pre-Work Assignment (Summer 2026, Data Engineering with Python track).*
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Pre-Submission Verification Checklist
 
-To learn more about Next.js, take a look at the following resources:
+*Use this checklist to manually verify the application meets all requirements before final submission.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] **Valid City Test:** Enter "Tokyo" on both pages and ensure correct data is rendered.
+- [ ] **Empty Input Test:** Submit the form with an empty input; expect "Please enter a city name."
+- [ ] **Fake City Test:** Enter an invalid string (e.g., "zzzzz"); expect "City not found. Please check spelling and try again."
+- [ ] **Offline/Network Error Test:** Disconnect from the internet and submit; expect "Could not connect. Please try again later."
+- [ ] **Navigation Test:** Click links in the navbar and ensure routing is instant without a full page reload.
+- [ ] **Mobile Layout Test:** Resize the window to mobile width (<600px); ensure the layout stacks gracefully.
+- [ ] **Console Check:** Open Developer Tools > Console and verify there are no React warnings or error logs.
+- [ ] **Build Check:** Run `npm run build` to ensure TypeScript compilation succeeds with no errors.
