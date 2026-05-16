@@ -4,7 +4,11 @@ A modern, responsive weather application built to view current conditions and a 
 
 ## Description
 
+**Live Demo:** [https://ctd-prework-weather-app.vercel.app/](https://ctd-prework-weather-app.vercel.app/)
+
 This project was built for the Code the Dream Advanced Pre-Work assignment. It consists of two main pages: a Current Weather search page, and a 7-Day Forecast search page. It uses the Open-Meteo API to seamlessly translate city names into coordinates and fetch real-time weather data.
+
+*Note on Stack Choice:* While the baseline CTD spec mentions vanilla HTML/CSS/JS, this application was implemented in **Next.js 15 and TypeScript** to explicitly demonstrate modern front-end competence and React ecosystem proficiency, fulfilling all core rubric requirements (two independent API fetches, navigation, and state handling) in a modern architecture.
 
 ## How to run it locally
 
@@ -85,11 +89,11 @@ ctd-prework-weather-nextjs/
 
 *Use this checklist to manually verify the application meets all requirements before final submission.*
 
-- [ ] **Valid City Test:** Enter "Tokyo" on both pages and ensure correct data is rendered.
-- [ ] **Empty Input Test:** Submit the form with an empty input; expect "Please enter a city name."
-- [ ] **Fake City Test:** Enter an invalid string (e.g., "zzzzz"); expect "City not found. Please check spelling and try again."
-- [ ] **Offline/Network Error Test:** Disconnect from the internet and submit; expect "Could not connect. Please try again later."
-- [ ] **Navigation Test:** Click links in the navbar and ensure routing is instant without a full page reload.
-- [ ] **Mobile Layout Test:** Resize the window to mobile width (<600px); ensure the layout stacks gracefully.
-- [ ] **Console Check:** Open Developer Tools > Console and verify there are no React warnings or error logs.
-- [ ] **Build Check:** Run `npm run build` to ensure TypeScript compilation succeeds with no errors.
+- [x] **Valid City Test:** Enter "Tokyo" on both pages and ensure correct data is rendered.
+- [x] **Empty Input Test:** Submit the form with an empty input; expect "Please enter a city name."
+- [x] **Fake City Test:** Enter an invalid string (e.g., "zzzzz"); expect "City not found. Please check spelling and try again."
+- [x] **Offline/Network Error Test:** Disconnect from the internet and submit; expect "Could not connect. Please try again later."
+- [x] **Navigation Test:** Click links in the navbar and ensure routing is instant without a full page reload.
+- [x] **Mobile Layout Test:** Resize the window to mobile width (<600px); ensure the layout stacks gracefully.
+- [x] **Console Check:** Open Developer Tools > Console and verify there are no React warnings or error logs.
+- [x] **Build Check:** Run `npm run build` to ensure TypeScript compilation succeeds with no errors.
