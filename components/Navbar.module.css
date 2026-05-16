@@ -2,25 +2,65 @@
   background-color: var(--card);
   border-bottom: 1px solid var(--border);
   padding: 1rem 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* Logo Section */
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.logoLink:hover {
+  opacity: 0.8;
+}
+
+.logoIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+
+/* Links Section */
 .links {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .link {
   font-weight: 500;
   color: var(--muted);
-  transition: color 0.2s ease;
-  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0.25rem;
+  position: relative;
+  font-size: 0.95rem;
 }
 
 .link:hover {
@@ -29,5 +69,70 @@
 
 .active {
   color: var(--primary);
-  border-bottom: 2px solid var(--primary);
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -0.1rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
+}
+
+/* GitHub Section */
+.socialContainer {
+  display: flex;
+  align-items: center;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.githubLink:hover {
+  color: var(--text);
+  background-color: rgba(0, 0, 0, 0.03);
+  border-color: var(--border);
+}
+
+.githubIcon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .githubText {
+    display: none;
+  }
+  
+  .githubLink {
+    padding: 0.4rem;
+  }
 }
