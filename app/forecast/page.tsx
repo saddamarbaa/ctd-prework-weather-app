@@ -2,18 +2,18 @@
 
 import { useState } from 'react';
 import SearchForm from '@/components/SearchForm';
-import CurrentWeatherCard from '@/components/CurrentWeatherCard';
-import { geocodeCity, fetchCurrentWeather } from '@/lib/api';
-import { GeocodedLocation, CurrentWeather } from '@/lib/types';
-import styles from './page.module.css';
+import ForecastList from '@/components/ForecastList';
+import { geocodeCity, fetchForecast } from '@/lib/api';
+import { GeocodedLocation, DailyForecast } from '@/lib/types';
+import styles from '../page.module.css';
 
-interface WeatherResult {
+interface ForecastResult {
   location: GeocodedLocation;
-  weather: CurrentWeather;
+  daily: DailyForecast;
 }
 
-export default function Home() {
-  const [result, setResult] = useState<WeatherResult | null>(null);
+export default function ForecastPage() {
+  const [result, setResult] = useState<ForecastResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,8 +35,8 @@ export default function Home() {
         return;
       }
 
-      const weather = await fetchCurrentWeather(location.latitude, location.longitude);
-      setResult({ location, weather });
+      const daily = await fetchForecast(location.latitude, location.longitude);
+      setResult({ location, daily });
     } catch (err) {
       if (err instanceof Error) {
         setError(err.message);
@@ -51,8 +51,8 @@ export default function Home() {
   return (
     <div className={styles.main}>
       <header className={styles.header}>
-        <h1 className={styles.title}>Current Weather</h1>
-        <p className={styles.subtitle}>Check the weather anywhere in the world</p>
+        <h1 className={styles.title}>7-Day Forecast</h1>
+        <p className={styles.subtitle}>Plan ahead with a detailed weekly outlook</p>
       </header>
 
       <SearchForm onSearch={handleSearch} isLoading={loading} />
@@ -70,7 +70,7 @@ export default function Home() {
       )}
 
       {result && !loading && !error && (
-        <CurrentWeatherCard weather={result.weather} location={result.location} />
+        <ForecastList forecast={result.daily} location={result.location} />
       )}
     </div>
   );
